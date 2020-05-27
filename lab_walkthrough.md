@@ -35,7 +35,7 @@ Cloud9 is fully managed IDE and provides the AWS SDK, AWS Cli and has Docker pre
 git clone https://github.com/cvolkmer/fhnw-web-deployment.git
 ```
 
-**Check the ECR**
+**Explore ECR**
 - Open a seaparate Browser tab (clone an existing one)
 - In the AWS Console select "Services" and type "Elastic Container Registry"
 - Click on the existing registry and open it
