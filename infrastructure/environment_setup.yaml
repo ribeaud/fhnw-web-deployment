@@ -283,7 +283,7 @@ Resources:
       Tags:
         - Key: Name
           Value: ALB-SG
-      VpcId: !Ref VPC #Dies referenziert auf eine exportierte Variable eines anderen Cloudformation stacks (network stack).
+      VpcId: !Ref VPC
 
   ECSSG:
     Type: "AWS::EC2::SecurityGroup"
@@ -350,8 +350,8 @@ Resources:
       SecurityGroups:
         - !Ref ALBSG
       Subnets:
-        - !Ref SubnetPublicA #Dies referenziert auf eine exportierte Variable eines anderen Cloudformation stacks (network stack).
-        - !Ref SubnetPublicB #Dies referenziert auf eine exportierte Variable eines anderen Cloudformation stacks (network stack).
+        - !Ref SubnetPublicA
+        - !Ref SubnetPublicB
       Tags:
         - Key: Name
           Value: ALB
@@ -483,7 +483,6 @@ Outputs:
   RouteTablePrivateB:
     Value: !Ref RouteTablePrivateB
     Description: Private B Route Table
-
   ECSCluster:
     Value: !Ref ECSCluster
     Description: ECS Cluster Name
