@@ -1,0 +1,48 @@
+=== Telnet
+==== Execute
+```
+$ telnet database-2.c23zxnhptcsn.eu-central-1.rds.amazonaws.com 3306
+```
+==== Response
+[source]
+--
+Trying 18.157.153.190...
+Connected to ec2-18-157-153-190.eu-central-1.compute.amazonaws.com.
+Escape character is '^]'.
+...
+--
+=== MySQL Client (using Docker)
+
+Trying to connect to the database using a simple **mysql** client:
+
+==== Execute
+```
+$ docker run --rm sami/mysql-client mysql --host=database-2.c23zxnhptcsn.eu-central-1.rds.amazonaws.com --user=admin --password=Welcome2AWS --execute="show databases;"
+```
+==== Response
+[source]
+--
+Database
+information_schema
+mysql
+performance_schema
+--
+=== Create db database
+==== Execute
+```
+$ docker run --rm sami/mysql-client mysql --host=database-2.c23zxnhptcsn.eu-central-1.rds.amazonaws.com --user=admin --password=Welcome2AWS --execute="create database db;"
+```
+Verify with `show databases` (see previous execution) that **db** has been created.
+
+=== Start the web application with Java (NO Docker)
+```
+java -DdataSource.username=admin -DdataSource.password=Welcome2AWS -DdataSource.driverClassName=com.mysql.jdbc.Driver -DdataSource.url=jdbc:mysql://database-2.c23zxnhptcsn.eu-central-1.rds.amazonaws.com:3306/db -jar RoomReservation-0.1.war
+```
+=== Build the image with Docker
+```
+docker build -f Dockerfile -t fhnw/room-reservation .
+```
+=== Run the image
+```
+docker run --rm fhnw/room-reservation -p 8080:8080
+```

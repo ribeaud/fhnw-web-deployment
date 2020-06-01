@@ -1,4 +1,5 @@
-FROM tomcat:8-jre8
-WORKDIR /usr/local/tomcat/bin
-COPY roomreservation.war /usr/local/tomcat/webapps/roomreservation.war
-CMD ["catalina.sh", "run"]
+FROM openjdk:12-alpine
+
+COPY roomreservation.war /
+
+ENTRYPOINT java -DdataSource.username=admin -DdataSource.password=Welcome2AWS -DdataSource.driverClassName=com.mysql.jdbc.Driver -DdataSource.url=jdbc:mysql://database-2.c23zxnhptcsn.eu-central-1.rds.amazonaws.com:3306/db -jar /roomreservation.war
