@@ -44,5 +44,5 @@ docker build -f Dockerfile -t fhnw/room-reservation .
 ```
 === Run the image
 ```
-docker run --rm fhnw/room-reservation -p 8080:8080
+docker run --rm -p 8080:8080 fhnw/room-reservation
 ```
