@@ -44,5 +44,5 @@ docker build -f Dockerfile -t fhnw/room-reservation .
 ```
 === Run the image
 ```
-docker run --rm -p 8080:8080 fhnw/room-reservation
+docker run --rm -p 8080:8080 --env dataSource.username=admin --env dataSource.password=Welcome2AWS --env dataSource.driverClassName=com.mysql.jdbc.Driver --env dataSource.url=jdbc:mysql://database-2.c23zxnhptcsn.eu-central-1.rds.amazonaws.com:3306/db fhnw/room-reservation
 ```
